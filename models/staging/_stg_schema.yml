@@ -18,6 +18,11 @@ models:
   - name: stg_lineitem
     description: "Tabla staging de lineitem limpia"
     columns:
+      - name: lineitem_sk
+        description: "Surrogate key única de lineitem"
+        tests:
+          - unique
+          - not_null
       - name: order_id
         description: "Foreign key"
         tests:

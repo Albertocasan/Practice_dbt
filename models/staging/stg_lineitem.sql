@@ -1,9 +1,10 @@
 {{ config(
     materialized = 'incremental',
-    unique_key = 'order_id'
+    unique_key = 'lineitem_sk'
 ) }}
 
 select
+    md5(concat(l_orderkey, '-', l_linenumber, '-', l_partkey, '-', l_suppkey)) as lineitem_sk, 
     l_orderkey::int                as order_id,
     l_linenumber::int              as line_number,
     l_partkey::int                 as part_id,
@@ -23,6 +24,6 @@ select
 from {{ source('tpch_sf1', 'lineitem') }}
 
 {% if is_incremental() %}
-  -- Solo nuevos pedidos (basado en la fecha más reciente cargada)
-  where o_orderdate > (select max(order_date) from {{ this }})
+  -- Solo cargar filas nuevas basadas en ship_date
+  where l_shipdate > (select max(ship_date) from {{ this }})
 {% endif %}
