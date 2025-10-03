@@ -89,6 +89,29 @@ models:
         tests:
           - not_null
 
+  - name: stg_region
+    description: "Tabla staging de region limpia"
+    columns:
+      - name: region_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_supplier
+    description: "Tabla staging de supplier limpia"
+    columns:
+      - name: supplier_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: nation_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
 
         
 
