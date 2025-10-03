@@ -43,6 +43,30 @@ models:
         tests:
           - not_null
 
+  - name: stg_customer
+    description: "Tabla staging de customer limpia"
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: nation_id
+        description: "Foreign key"
+        tests:
+          - not_null
+  
+  
+  - name: stg_nation
+    description: "Tabla staging de naciones limpia n"
+    columns:
+      - name: nation_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
 
         
 
