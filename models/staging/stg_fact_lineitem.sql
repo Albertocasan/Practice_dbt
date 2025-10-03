@@ -4,7 +4,7 @@
 ) }}
 
 select
-    md5(concat(l_orderkey, '-', l_linenumber, '-', l_partkey, '-', l_suppkey)) as lineitem_sk, 
+    {{ surrogate_key(['l_orderkey','l_linenumber','l_partkey','l_suppkey']) }} as lineitem_sk, 
     l_orderkey::int                as order_id,
     l_linenumber::int              as line_number,
     l_partkey::int                 as part_id,
