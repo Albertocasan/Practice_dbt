@@ -40,6 +40,6 @@ models:
     +database: DBT_FINAL   
     +schema: STAGING      
 
-    example:               
+    staging:               
       +materialized: table
 

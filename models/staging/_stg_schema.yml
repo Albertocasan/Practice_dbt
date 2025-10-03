@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Tabla staging de orders limpia"
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Foreign key"
+        tests:
+          - not_null
+      
+  - name: stg_lineitem
+    description: "Tabla staging de lineitem limpia"
+    columns:
+      - name: order_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+      - name: line_number
+        description: "Foreign key"
+        tests:
+          - not_null
+
+      - name: part_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+      - name: supplier_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+
+        
+
+
