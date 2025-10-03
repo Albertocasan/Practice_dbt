@@ -34,11 +34,17 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   my_new_project:
-    +database: DBT_FINAL
-    +schema: STAGING
-
     staging:
-      +materialized: table
-
+      +database: DBT_FINAL
+      +schema: STAGING          
+      +materialized: table      
+    transformation:
+      +database: DBT_FINAL
+      +schema: TRANSFORMATION   
+      +materialized: view      
+    marts:
+      +database: DBT_FINAL
+      +schema: MARTS            
+      +materialized: table      
 flags:
   require_generic_test_arguments_property: true

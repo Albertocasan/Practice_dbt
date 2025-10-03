@@ -1,5 +1,5 @@
 select
-    {{ surrogate_key(['order_id','line_number','part_id','supplier_id']) }} as lineitem_sk,
+    lineitem_sk,
     order_id,
     line_number,
     part_id,
@@ -8,8 +8,8 @@ select
     extended_price,
     discount,
     tax,
-    (extended_price * (1 - discount)) as net_price,
-    (extended_price * (1 - discount) * (1 + tax)) as gross_price,
+    net_price,
+    gross_price,
     ship_date,
     commit_date,
     receipt_date,
@@ -18,4 +18,4 @@ select
     ship_instruct,
     ship_mode,
     comment
-from {{ ref('stg_fact_lineitem') }}
+from {{ ref('trans_fact_lineitem') }}
