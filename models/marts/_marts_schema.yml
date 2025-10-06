@@ -1,0 +1,48 @@
+version: 2
+
+models:
+
+  - name: fact_lineitem
+    description: "Tabla de hechos de las líneas de pedido con métricas derivadas"
+    columns:
+      - name: lineitem_sk
+        description: "Clave sustituta única de la línea de pedido (PK)"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "FK hacia dim_customer"
+        tests:
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_id
+
+      - name: part_id
+        description: "FK hacia dim_part"
+        tests:
+          - relationships:
+              to: ref('dim_part')
+              field: part_id
+
+      - name: part_id
+        description: "FK hacia dim_partsupp"
+        tests:
+          - relationships:
+              to: ref('dim_partsupp')
+              field: part_id
+
+      - name: supplier_id
+        description: "FK hacia dim_supplier"
+        tests:
+          - relationships:
+              to: ref('dim_supplier')
+              field: supplier_id
+
+      - name: nation_id
+        description: "FK hacia dim_nation"
+        tests:
+          - relationships:
+              to: ref('dim_nation')
+              field: nation_id
+

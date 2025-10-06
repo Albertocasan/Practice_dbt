@@ -4,6 +4,8 @@ select
     line_number,
     part_id,
     supplier_id,
+    customer_id,
+    nation_id,
     quantity,
     extended_price,
     discount,

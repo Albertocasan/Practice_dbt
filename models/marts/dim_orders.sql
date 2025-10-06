@@ -7,5 +7,5 @@ select distinct
     order_priority,
     clerk,
     ship_priority,
-    order_comment
-from {{ ref('trans_dim_orders') }}
+    comment
+from {{ ref('stg_dim_orders') }}

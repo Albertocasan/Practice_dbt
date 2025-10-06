@@ -25,5 +25,5 @@ from {{ source('tpch_sf1', 'lineitem') }}
 
 {% if is_incremental() %}
   -- Solo cargar filas nuevas basadas en ship_date
-  where l_shipdate > (select max(ship_date) from {{ this }})
+  where l_shipdate >= (select max(ship_date) from {{ this }})
 {% endif %}
