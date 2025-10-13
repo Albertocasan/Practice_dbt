@@ -1,0 +1,23 @@
+select
+    lineitem_sk,
+    order_id,
+    line_number,
+    part_id,
+    supplier_id,
+    customer_id,
+    nation_id,
+    quantity,
+    extended_price,
+    discount,
+    tax,
+    net_price,
+    gross_price,
+    ship_date,
+    commit_date,
+    receipt_date,
+    return_flag,
+    line_status,
+    ship_instruct,
+    ship_mode,
+    comment
+from {{ ref('trans_fact_lineitem') }}

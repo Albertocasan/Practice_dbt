@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: trans_fact_lineitem
+    description: "Modelo intermedio de lineitem con métricas derivadas y surrogate key"
+    columns:
+      - name: lineitem_sk
+        description: "Surrogate key"
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "Foreign keys"
+        tests:
+          - not_null
+      - name: part_id
+        description: "Foreign keys"
+        tests:
+          - not_null
+      - name: supplier_id
+        description: "Foreign key"
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Foreign key"
+        tests:
+           - not_null
+
+      - name: nation_id
+        description: "Foreign key"
+        tests:
+          - not_null

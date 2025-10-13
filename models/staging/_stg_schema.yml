@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: stg_dim_orders
+    description: "Tabla staging de orders limpia"
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Foreign key"
+        tests:
+          - not_null
+      
+  - name: stg_fact_lineitem
+    description: "Tabla staging de lineitem limpia"
+    columns:
+      - name: lineitem_sk
+        description: "Surrogate key única de lineitem"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+      - name: line_number
+        description: "Foreign key"
+        tests:
+          - not_null
+
+      - name: part_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+      - name: supplier_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+  - name: stg_dim_customer
+    description: "Tabla staging de customer limpia"
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: nation_id
+        description: "Foreign key"
+        tests:
+          - not_null
+  
+  
+  - name: stg_dim_nation
+    description: "Tabla staging de naciones limpia n"
+    columns:
+      - name: nation_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_dim_part
+    description: "Tabla staging de part limpia"
+    columns:
+      - name: part_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_dim_partsupp
+    description: "Tabla staging partsupp limpia"
+    columns:
+      - name: part_id
+        description: "Primary key"
+        tests:
+          - not_null
+
+      - name: supplier_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+  - name: stg_dim_region
+    description: "Tabla staging de region limpia"
+    columns:
+      - name: region_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_dim_supplier
+    description: "Tabla staging de supplier limpia"
+    columns:
+      - name: supplier_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+      - name: nation_id
+        description: "Foreign key"
+        tests:
+          - not_null
+
+
+        
+
+
